@@ -17,10 +17,12 @@ module QyWechat
         return
       end
       content, status = Prpcrypt.decrypt(aes_key, params[:echostr], corp_id)
-      render text: content, status: status
+      render text: "", status: 200
     end
 
-    def reply;end
+    def reply
+
+    end
 
     private
 

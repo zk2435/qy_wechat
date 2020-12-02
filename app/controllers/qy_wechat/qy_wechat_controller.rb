@@ -18,7 +18,7 @@ module QyWechat
       end
       content, status = Prpcrypt.decrypt(aes_key, params[:echostr], corp_id)
       puts content,status
-      render :text => "Hello world"
+      render json: {s: "Hello world"}
     end
 
     def reply

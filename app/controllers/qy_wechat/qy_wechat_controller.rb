@@ -33,10 +33,10 @@ module QyWechat
         @body_xml       = OpenStruct.new(hash)
         content         = Prpcrypt.decrypt(aes_key, @body_xml.Encrypt, corp_id)[0]
         Rails.logger.debug("DECRYPT WECHAT MESSAGE: #{content}")
+        binding.pry
         hash            = MultiXml.parse(content)["xml"]
         @weixin_message = Message.factory(hash)
         @keyword        = @weixin_message.Content
-        puts @keyword
       end
 
       def encoding_aes_key

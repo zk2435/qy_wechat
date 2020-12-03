@@ -20,8 +20,7 @@ module QyWechat
       render plain: content
     end
 
-    def reply
-    end
+    def reply;end
 
     private
 
@@ -35,6 +34,7 @@ module QyWechat
         Rails.logger.debug("DECRYPT WECHAT MESSAGE: #{content}")
         hash            = MultiXml.parse(content)["xml"]
         @weixin_message = Message.factory(hash)
+        Rails.logger.debug("--------------: #{@weixin_message}")
         @keyword        = @weixin_message.Content
       end
 

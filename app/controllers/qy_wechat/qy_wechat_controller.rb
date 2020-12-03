@@ -35,7 +35,6 @@ module QyWechat
         Rails.logger.debug("DECRYPT WECHAT MESSAGE: #{content}")
         hash            = MultiXml.parse(content)["xml"]
         @weixin_message = Message.factory(hash)
-        puts @weixin_message
         @keyword        = @weixin_message.Content
         puts @keyword
       end

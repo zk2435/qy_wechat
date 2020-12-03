@@ -21,7 +21,7 @@ module QyWechat
     end
 
     def reply
-
+      puts @keyword
     end
 
     private

@@ -21,7 +21,6 @@ module QyWechat
     end
 
     def reply
-      puts @keyword
     end
 
     private
@@ -36,7 +35,9 @@ module QyWechat
         Rails.logger.debug("DECRYPT WECHAT MESSAGE: #{content}")
         hash            = MultiXml.parse(content)["xml"]
         @weixin_message = Message.factory(hash)
+        put @weixin_message
         @keyword        = @weixin_message.Content
+        puts @keyword
       end
 
       def encoding_aes_key

@@ -2,7 +2,11 @@
 QyWechat::QyWechatController.class_eval do
 
   def reply
-    render xml: send("response_#{@weixin_message.MsgType}_message", {})
+    if @weixin_message.MsgType.present?
+      render xml: send("response_#{@weixin_message.MsgType}_message", {})
+    else
+      render plain: "success"
+    end
   end
 
   private
